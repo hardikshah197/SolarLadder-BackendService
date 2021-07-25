@@ -1,0 +1,6 @@
+GET /api/inventry HTTP/1.1
+Host: localhost:5000
+Content-Type: application/json
+Accept: application/json
+
+{}
