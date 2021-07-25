@@ -1,5 +1,6 @@
 const express = require('express');
 const router  = express.Router();
+require('dotenv').config();
 const httpStatusCode = require('http-status-codes');
 const inventrySchema = require('../model/inventry');
 const fetch = require('node-fetch');
@@ -19,7 +20,7 @@ router.get('/inventry',(req,res)=>{
 router.post('/inventry',(req,res)=>{
     const {name,item_code,category,item_detail,item_image,amount,tax_rate,item_type,unit,open_stock,low_warning,lower_limit,date} = req.body;
     let message;
-    const url='http://localhost:5000/api/item';
+    const url=`${process.env.URL}/api/item`;
     const options = {
         method:'POST',
         headers:{
@@ -58,7 +59,7 @@ router.post('/inventry',(req,res)=>{
 router.put('/inventry',(req,res)=>{
     const {itemId,inventryId,name,item_code,category,item_detail,item_image,unit,tax_rate,amount,item_type,open_stock,low_warning,lower_limit,date} = req.body;
     let message;
-    const url='http://localhost:5000/api/item';
+    const url=`${process.env.URL}/api/item`;
     const options = {
         method:'PUT',
         headers:{
